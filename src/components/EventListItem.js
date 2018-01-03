@@ -4,18 +4,23 @@ const EventListItem = props => {
   return (
     <div>
       <div className="container">
-        <div className="dateVenue">
+        <div>
           <h5 style={{ color: "#00b4b3" }}>{props.date}</h5>
         </div>
         <div>
           <h5>{props.venue}</h5>
         </div>
-        <div className="cityButton">
-          <p style={{ marginRight: 10, fontSize: "12px" }}>
-            {props.city.city}, {props.city.region}
-          </p>
-        </div>
-        <div>{props.button ? <a className="button">Tickets</a> : null}</div>
+
+        <p style={{ marginRight: 10, fontSize: "12px", position: "relative" }}>
+          {props.city.city}, {props.city.region}
+        </p>
+
+        {props.button ? (
+          <a className="button" href={props.button}>
+            Tickets
+          </a>
+        ) : null}
+
         <style jsx>
           {`
             .container {

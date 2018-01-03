@@ -20,7 +20,7 @@ class EventList extends Component {
                   : artist.venue.country
             }}
             venue={artist.venue.name}
-            button={artist.offers[0]}
+            button={artist.offers[0].url}
           />
         ))}
         <style jsx>{`

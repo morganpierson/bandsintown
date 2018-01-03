@@ -15,14 +15,17 @@ export default function withSubscription(WrappedComponent) {
     componentDidMount() {
       const queryParams = queryString.parse(window.location.search).artist;
       console.log("QUERY PARAMS ", queryParams);
-      api.fetchArtistInfo(decodeURIComponent(queryParams)).then(res => {
-        console.log("RES ", res);
-        return this.setState({ data: res.data });
-      });
-      api.fetchArtistInfo2(decodeURIComponent(queryParams)).then(res => {
-        console.log("RES ", res);
-        return this.setState({ artistData: res.data });
-      });
+      api
+        .fetchArtistInfo(queryParams)
+        .then(res => {
+          return this.setState({ data: res.data });
+        })
+        .then(
+          api.fetchArtistInfo2(queryParams).then(res => {
+            console.log("RES ", res);
+            return this.setState({ artistData: res.data });
+          })
+        );
     }
     render() {
       if (this.state.data) {

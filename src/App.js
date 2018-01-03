@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
+import { isEqual } from "lodash";
 import logo from "./logo.svg";
 import "./App.css";
 import api from "./utils/ArtistInfo";
@@ -15,31 +16,52 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log("PROPS ", this.props);
-  }
-
   render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <Header
-            artistName={this.state.data[0].lineup[0]}
-            imageUrl={this.state.artistData.thumb_url}
-          />
-        </div>
-        <div className="list">
-          <EventList artistData={this.state.data} />
-        </div>
-        <style jsx>
-          {`
-            .list {
-              marginTop: 20px;
-            }
-          `}
-        </style>
-      </div>
-    );
+    if (this.props.data && this.props.artistData) {
+      if (this.props.data.length < 1) {
+        return (
+          <div className="App">
+            <div className="App-header">
+              <Header
+                artistName={this.props.artistData.name}
+                imageUrl={this.props.artistData.thumb_url}
+              />
+            </div>
+            <h3
+              style={{
+                textAlign: "center",
+                color: "gray"
+              }}
+            >
+              No upcoming events.
+            </h3>
+          </div>
+        );
+      } else {
+        return (
+          <div className="App">
+            <div className="App-header">
+              <Header
+                artistName={this.props.artistData.name}
+                imageUrl={this.props.artistData.thumb_url}
+              />
+            </div>
+            <div className="list">
+              <EventList artistData={this.props.data} />
+            </div>
+            <style jsx>
+              {`
+                .list {
+                  marginTop: 20px;
+                }
+              `}
+            </style>
+          </div>
+        );
+      }
+    } else {
+      return <div className="loading">Loading...</div>;
+    }
   }
 }
 
