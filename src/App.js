@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import moment from "moment";
-import { isEqual } from "lodash";
-import logo from "./logo.svg";
-import "./App.css";
-import api from "./utils/ArtistInfo";
+import PropTypes from "prop-types";
+
+import Loader from "./components/Loading";
 import WithArtist from "./hoc/WithArtist";
 import EventList from "./components/EventList";
 import Header from "./components/Header";
+
 class App extends Component {
   render() {
     const { data, artistData } = this.props;
@@ -20,6 +19,7 @@ class App extends Component {
                 imageUrl={artistData.thumb_url}
               />
             </div>
+
             <h3
               style={{
                 textAlign: "center",
@@ -54,6 +54,7 @@ class App extends Component {
                   width: 100%;
                   float: left;
                 }
+
                 @media screen and (min-width: 800px) {
                   .App {
                     display: flex;
@@ -68,9 +69,16 @@ class App extends Component {
         );
       }
     } else {
-      return <div className="loading">Loading...</div>;
+      return <Loader />;
     }
   }
 }
+
+App.propTypes = {
+  artistData: {
+    name: PropTypes.string,
+    thumb_url: Prop.string
+  }
+};
 
 export default WithArtist(App);

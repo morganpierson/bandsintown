@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import EventListItem from "./EventListItem";
 import moment from "moment";
+import PropTypes from "prop-types";
 class EventList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { artistData } = this.props;
     return (
@@ -34,5 +31,24 @@ class EventList extends Component {
     );
   }
 }
+
+EventList.propTypes = {
+  artistData: {
+    artist: {
+      datetime: PropTypes.string,
+      venue: {
+        city: PropTypes.string,
+        region: PropTypes.string,
+        country: PropTypes.string,
+        name: PropTypes.string
+      },
+      offers: [
+        {
+          url: string
+        }
+      ]
+    }
+  }
+};
 
 export default EventList;
