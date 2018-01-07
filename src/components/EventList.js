@@ -44,7 +44,7 @@ EventList.propTypes = {
       },
       offers: [
         {
-          url: string
+          url: PropTypes.string
         }
       ]
     }
