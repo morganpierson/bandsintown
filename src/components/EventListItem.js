@@ -4,36 +4,33 @@ const EventListItem = props => {
   return (
     <div>
       <div className="container">
-        <div className="dateVenue" style={{ position: "relative" }}>
-          <div style={{ position: "absolute" }}>
-            <h5 style={{ color: "#00b4b3" }}>{props.date}</h5>
+        <div className="listContents">
+          <div className="date">
+            <h5 style={{ color: "#00b4b3", whiteSpace: "nowrap" }}>
+              {props.date}
+            </h5>
           </div>
-          <div style={{ paddingLeft: "7em" }}>
-            <h5>{props.venue}</h5>
+          <div className="venue">
+            <h5 style={{ whiteSpace: "nowrap" }}>{props.venue}</h5>
           </div>
-        </div>
 
-        <div className={!props.mobile && "cityButton"}>
-          <div style={{ position: "abolute", paddingLeft: "7em" }}>
-            <p style={{ fontSize: "12px" }}>
+          <div className="city">
+            <p className="cityText">
               {props.city.city}, {props.city.region}
             </p>
           </div>
-          <div style={{ alignSelf: "end" }}>
-            {props.button ? (
-              <a className="button" href={props.button}>
-                Tickets
-              </a>
-            ) : null}
-          </div>
         </div>
+        <div className="button">
+          {props.button ? <a href={props.button}>Tickets</a> : null}
+        </div>
+
         <style jsx>
           {`
-            .button {
+            a {
               background-color: white;
               border: none;
               color: #00b4b3;
-              padding: 8px 20px;
+              padding: 7px 15px;
               text-align: center;
               text-decoration: none;
               display: inline-block;
@@ -45,36 +42,105 @@ const EventListItem = props => {
               border: 1px solid;
               font-weight: bold;
             }
-            .button:hover {
+
+            a:hover {
               background-color: #00b4b3;
               color: white;
             }
-            .container {
-              display: flex;
-              justify-content: space-between;
-              flex-direction: row;
-              align-items: center;
-              width: 80%;
-              margin: 0 auto;
-              margin-top: 20px;
+            p {
+              font-size: 12px;
+              align: center;
+              white-space: nowrap;
             }
-            .cityButton {
-              display: flex;
-              align-items: center;
-              width: 50%;
-              justify-content: space-between;
-            }
-            .dateVenue {
-              display: flex;
-              width: 50%;
-              align-items: center;
-              justify-content: space-between;
+            .button {
+              transform: translate(0, -50%);
+              float: right;
             }
             .divider {
               border-top: #8c8b8b 1px solid;
-              width: 82%;
+              width: 100%;
               align-items: center;
               margin: 0 auto;
+            }
+
+            .container {
+              width: 100%;
+              display: flex;
+              position: relative;
+              justify-content: space-between;
+            }
+            .listContents {
+              display: flex;
+              flex-flow: column;
+              justify-content: start;
+              padding-left: 1em;
+              width: 50%;
+            }
+            .venue {
+              width: 25%;
+              align-self: start;
+              margin-bottom: -2em;
+            }
+            .date {
+              width: 25%;
+              margin-bottom: -2em;
+              align-self: start;
+            }
+            .city {
+              width: 25%;
+              float: right;
+            }
+            .button {
+              align-self: flex-end;
+              width: 25%;
+            }
+            .cityText {
+              padding: 0;
+            }
+            @media screen and (min-width: 720px) {
+              .container {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                align-items: center;
+                width: 80%;
+                margin: 0 auto;
+                margin-top: 20px;
+              }
+              .listContents {
+                flex-flow: row;
+                align-items: center;
+                margin-bottom: 2em;
+                width: 100%;
+                padding-left: 0;
+                margin-bottom: 0.5em;
+              }
+
+              .city {
+                width: 33%;
+                margin-right: 1em;
+              }
+              .cityText {
+                padding: 5%;
+              }
+              .venue {
+                width: 33%;
+                margin-left: -7em;
+                margin-right: 9em;
+              }
+              .date {
+                width: 33%;
+              }
+
+              .button {
+                width: 10%;
+                display: flex;
+                float: right;
+                justify-content: flex-end;
+              }
+              .divider {
+                width: 82%;
+              }
             }
           `}
         </style>

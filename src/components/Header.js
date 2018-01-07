@@ -21,9 +21,10 @@ const Header = props => {
       <style jsx>{`
         .headerContainer {
           display: flex;
-          width: 80%;
+          width: 100%;
           margin: 0 auto;
           position: static;
+          padding-left: 1em;
         }
         .headerContent {
           display: flex;
@@ -31,6 +32,22 @@ const Header = props => {
         }
         .imageAside {
           margin-left: 1em;
+        }
+        @media screen and (min-width: 800px) {
+          .headerContainer {
+            display: flex;
+            width: 80%;
+            margin: 0 auto;
+            position: static;
+            padding-left: 0;
+          }
+          .headerContent {
+            display: flex;
+            align-items: center;
+          }
+          .imageAside {
+            margin-left: 1em;
+          }
         }
       `}</style>
     </div>

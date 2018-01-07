@@ -8,10 +8,6 @@ import WithArtist from "./hoc/WithArtist";
 import EventList from "./components/EventList";
 import Header from "./components/Header";
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { data, artistData } = this.props;
     if (data && artistData) {
@@ -49,10 +45,22 @@ class App extends Component {
             <style jsx>
               {`
                 .App {
-                  display: flex;
-                  width: 80%;
-                  margin: 0 auto;
-                  padding-top: 1em;
+                  width: 100%;
+                }
+                body {
+                  width: 100%;
+                }
+                .App-header {
+                  width: 100%;
+                  float: left;
+                }
+                @media screen and (min-width: 800px) {
+                  .App {
+                    display: flex;
+                    width: 80%;
+                    margin: 0 auto;
+                    padding-top: 1em;
+                  }
                 }
               `}
             </style>
