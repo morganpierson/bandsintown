@@ -14,7 +14,6 @@ export default function withSubscription(WrappedComponent) {
     }
     componentDidMount() {
       const queryParams = queryString.parse(window.location.search).artist;
-      console.log("QUERY PARAMS ", queryParams);
       api
         .fetchArtistInfo(queryParams)
         .then(res => {
@@ -22,7 +21,6 @@ export default function withSubscription(WrappedComponent) {
         })
         .then(
           api.fetchArtistInfo2(queryParams).then(res => {
-            console.log("RES ", res);
             return this.setState({ artistData: res.data });
           })
         );

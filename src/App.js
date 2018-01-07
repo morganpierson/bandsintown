@@ -10,21 +10,18 @@ import Header from "./components/Header";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: this.props.data,
-      artistData: this.props.artistData
-    };
   }
 
   render() {
-    if (this.props.data && this.props.artistData) {
-      if (this.props.data.length < 1) {
+    const { data, artistData } = this.props;
+    if (data && artistData) {
+      if (data.length < 1) {
         return (
           <div className="App">
             <div className="App-header">
               <Header
-                artistName={this.props.artistData.name}
-                imageUrl={this.props.artistData.thumb_url}
+                artistName={artistData.name}
+                imageUrl={artistData.thumb_url}
               />
             </div>
             <h3
@@ -42,17 +39,20 @@ class App extends Component {
           <div className="App">
             <div className="App-header">
               <Header
-                artistName={this.props.artistData.name}
-                imageUrl={this.props.artistData.thumb_url}
+                artistName={artistData.name}
+                imageUrl={artistData.thumb_url}
               />
             </div>
             <div className="list">
-              <EventList artistData={this.props.data} />
+              <EventList artistData={data} />
             </div>
             <style jsx>
               {`
-                .list {
-                  marginTop: 20px;
+                .App {
+                  display: flex;
+                  width: 80%;
+                  margin: 0 auto;
+                  padding-top: 1em;
                 }
               `}
             </style>

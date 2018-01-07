@@ -5,11 +5,12 @@ class EventList extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    console.log("PROPS ", this.props);
+    const { artistData } = this.props;
     return (
       <div className="something">
-        {this.props.artistData.map(artist => (
+        {artistData.map(artist => (
           <EventListItem
             date={moment(artist.datetime).format("MMM D")}
             city={{
@@ -25,7 +26,8 @@ class EventList extends Component {
         ))}
         <style jsx>{`
           .something {
-            margin: 0 auto;
+            overflow: scroll;
+            height: 30em;
           }
         `}</style>
       </div>
