@@ -77,7 +77,7 @@ class App extends Component {
 App.propTypes = {
   artistData: {
     name: PropTypes.string,
-    thumb_url: Prop.string
+    thumb_url: PropTypes.string
   }
 };
 
