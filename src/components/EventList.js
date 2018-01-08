@@ -18,7 +18,7 @@ class EventList extends Component {
                   : artist.venue.country
             }}
             venue={artist.venue.name}
-            button={artist.offers[0].url}
+            button={artist.offers.length > 0 && artist.offers[0].url}
           />
         ))}
         <style jsx>{`
@@ -31,24 +31,5 @@ class EventList extends Component {
     );
   }
 }
-
-EventList.propTypes = {
-  artistData: {
-    artist: {
-      datetime: PropTypes.string,
-      venue: {
-        city: PropTypes.string,
-        region: PropTypes.string,
-        country: PropTypes.string,
-        name: PropTypes.string
-      },
-      offers: [
-        {
-          url: PropTypes.string
-        }
-      ]
-    }
-  }
-};
 
 export default EventList;

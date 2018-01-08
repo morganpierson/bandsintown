@@ -4,7 +4,9 @@ import "../App.css";
 
 const Loader = () => {
   return (
-    <div>
+    <div
+      style={{ margin: "0 auto", textAlign: "center", position: "relative" }}
+    >
       <img src={logo} className="App-logo" alt="logo" />
     </div>
   );

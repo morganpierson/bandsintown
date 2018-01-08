@@ -13,10 +13,16 @@ export default function withSubscription(WrappedComponent) {
       };
     }
     componentDidMount() {
+      let WINDOW = window.location.search;
+      if (WINDOW === "") {
+        window.location.search = "artist=Converge";
+      }
       const queryParams = queryString.parse(window.location.search).artist;
+
       api
         .fetchArtistInfo(queryParams)
         .then(res => {
+          console.log("RESS ", res);
           return this.setState({ data: res.data });
         })
         .then(

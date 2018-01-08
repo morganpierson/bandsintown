@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { BrowserRouter } from "react-router-dom";
 
 import Loader from "./components/Loading";
 import WithArtist from "./hoc/WithArtist";
@@ -42,6 +43,7 @@ class App extends Component {
             <div className="list">
               <EventList artistData={data} />
             </div>
+
             <style jsx>
               {`
                 .App {
@@ -73,12 +75,5 @@ class App extends Component {
     }
   }
 }
-
-App.propTypes = {
-  artistData: {
-    name: PropTypes.string,
-    thumb_url: PropTypes.string
-  }
-};
 
 export default WithArtist(App);
