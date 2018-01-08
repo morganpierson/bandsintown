@@ -1,4 +1,4 @@
-Clone repository
-Npm install
-Npm start
+Clone repository,
+npm install,
+npm start
 :)
